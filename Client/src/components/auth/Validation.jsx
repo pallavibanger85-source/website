@@ -1,0 +1,39 @@
+import * as Yup from "yup";
+
+export const formik = useFormik({
+  initialValues: {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    gender: "",
+  },
+
+  validationSchema: Yup.object({
+    name: Yup.string()
+      .min(3, "Name must be at least 3 characters")
+      .required("Name is required"),
+
+    email: Yup.string()
+      .email("Invalid email")
+      .required("Email is required"),
+
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+
+    confirmPassword: Yup.string()
+      .oneOf(
+        [Yup.ref("password"), null],
+        "Passwords must match"
+      )
+      .required("Confirm password is required"),
+
+    gender: Yup.string()
+      .required("Gender is required"),
+  }),
+
+  onSubmit: (values) => {
+    console.log(values);
+  },
+});
