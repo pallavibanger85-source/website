@@ -25,58 +25,8 @@ export const verification_otp = async (email, name, otp) => {
         console.log("Message sent: %s", info.messageId);
     }
     catch(err){console.log(err.message)}
-    try {
-        const info = await transporter.sendMail({
-            from: 'SMTP_USER', 
-            to: email, 
-            subject: "Hello", 
-            text: "Hello world?", 
-            html: `<b>Hello world? ${name}  ${otp} </b>`,
-        });
 
-        console.log("Message sent: %s", info.messageId);
-    }
-    catch(err){console.log(err.message)}
-    try {
-        const info = await transporter.sendMail({
-            from: 'SMTP_USER', 
-            to: email, 
-            subject: "Hello", 
-            text: "Hello world?", 
-            html: `<b>Hello world? ${name}  ${otp} </b>`,
-        });
-
-        console.log("Message sent: %s", info.messageId);
-    }
-    catch(err){console.log(err.message)}
-    try {
-        const info = await transporter.sendMail({
-            from: 'SMTP_USER', 
-            to: email, 
-            subject: "Hello", 
-            text: "Hello world?", 
-            html: `<b>Hello world? ${name}  ${otp} </b>`,
-        });
-
-        console.log("Message sent: %s", info.messageId);
-    }
-    catch(err){console.log(err.message)}
-    try {
-        const info = await transporter.sendMail({
-            from: 'SMTP_USER', 
-            to: email, 
-            subject: "Hello", 
-            text: "Hello world?", 
-            html: `<b>Hello world? ${name}  ${otp} </b>`,
-        });
-
-        console.log("Message sent: %s", info.messageId);
-    }
-    catch(err){console.log(err.message)}
 }
-
-
-
 
 
 

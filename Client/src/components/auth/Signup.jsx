@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import axios from 'axios'
+import {showSuccessToast,showErrorToast} from '../'
 import {
   FaUser,
   FaEnvelope,
@@ -56,19 +57,35 @@ export default function Signup() {
       ),
     }),
 
-    onSubmit: (values, { resetForm }) => {
-      console.log(values);
+    // SUBMIT
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        console.log("Form Data:", values);
 
-      alert("Signup Successful ✅");
+        API CALL EXAMPLE
+        const response = await axios.post(
+          "http://localhost:5000/api/signup",
+          values
+        );
 
-      resetForm();
+        alert("Signup Successful ✅");
+
+        resetForm();
+      } catch (error) {
+        console.error("Signup Error:", error);
+
+        alert(
+          error?.response?.data?.message ||
+            "Something went wrong ❌"
+        );
+      }
     },
   });
 
   return (
     <>
       {/* MAIN */}
-      <div className="min-h-screen  pb-10 bg-[#f5f7fb] overflow-hidden">
+      <div className="min-h-screen pb-10 bg-[#f5f7fb] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-6 items-center">
 
@@ -83,7 +100,6 @@ export default function Signup() {
                 </span>
               </h1>
 
-              
               <div className="w-36 h-1 bg-blue-600 rounded-full mt-10"></div>
 
               {/* ARROW */}
@@ -115,6 +131,7 @@ export default function Signup() {
 
             {/* FORM */}
             <div className="bg-white rounded-[28px] shadow-xl border border-gray-100 px-8 py-8 w-full">
+              
               {/* TOP */}
               <div className="text-center mb-8">
                 <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
@@ -430,7 +447,6 @@ export default function Signup() {
               <FaQuoteLeft className="text-[80px] text-blue-500 mb-8" />
 
               <h2 className="text-3xl italic text-gray-700 leading-relaxed">
-               
                 Be part of a community
                 <br />
                 that inspires!
@@ -450,6 +466,7 @@ export default function Signup() {
                 )}
               </div>
             </div>
+
           </div>
         </div>
       </div>

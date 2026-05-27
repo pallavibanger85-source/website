@@ -4,7 +4,7 @@ const routes = express.Router();
 
 
 routes.post('/register',register)
-routes.post('/verify',verify)
+routes.post('/verify_otp/:id',verify)
 routes.post('/login',login)
 
 routes.use((req,res)=>{
